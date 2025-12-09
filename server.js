@@ -1,35 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
+// server.js
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-// 🔧 Configuration
 dotenv.config();
+
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// 📦 Import des routes
-const vehicleRoutes = require('./routes/vehicleRoutes');
-
-// 🌐 Utilisation des routes
-app.use('/api/vehicles', vehicleRoutes);
-
-// 🔌 Connexion à MongoDB
+// Connexion à MongoDB
 mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
-.then(() => console.log('✅ Connecté à MongoDB'))
-.catch((err) => console.error('❌ Erreur MongoDB :', err));
+.then(() => console.log('MongoDB connecté ✅'))
+.catch(err => console.error('Erreur MongoDB ❌', err));
 
-// 🧪 Route de test
+// Exemple de route
 app.get('/', (req, res) => {
-  res.send('Serveur HA AUTOS opérationnel !');
+    res.send('HA AUTOS backend fonctionne !');
 });
 
-// 🚀 Démarrage du serveur
-const PORT = process.env.PORT || 3000;
+// Lancement du serveur
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur lancé sur le port ${PORT}`);
+    console.log(`Serveur lancé sur le port ${PORT} 🚀`);
 });
