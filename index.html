@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HA AUTOS - Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fdfdfd;
+      color: #1a1a1a;
+      scroll-behavior: smooth;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    header {
+      background: linear-gradient(to right, #002244, #014080);
+      color: white;
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 2.5em;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .logo-icon {
+      width: 70px;
+      height: 70px;
+      background: #1a1a1a;
+      color: #ffcc00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4em;
+      font-weight: 800;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .logo-icon::before { content: "HA"; }
+    .logo-text { display: flex; flex-direction: column; align-items: flex-start; }
+    .logo-text .main { display: flex; gap: 4px; align-items: center; }
+    .logo-text .h, .logo-text .a, .logo-text .autos { color: #ffcc00; }
+    .logo-text .autos { font-size: 0.7em; font-style: italic; }
+    .adresse { font-size: 0.9em; margin-top: 10px; }
+
+    nav {
+      background: #014080;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 16px 24px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      background: #0066cc;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      background: #333;
+      text-align: center;
+      padding: 80px 20px 40px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .hero::before {
+      content: "Votre nouvelle voiture vous attend !";
+      display: block;
+      font-size: 1.4em;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1em;
+      font-weight: normal;
+      margin-top: 10px;
+    }
+    .hero p::before {
+      content: "Fiable et accessible, tout simplement.";
+    }
+
+    .vehicles-btn {
+      margin-top: 20px;
+      background-color: #ffc107;
+      color: #1a1a1a;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+    .vehicles-btn:hover {
+      background-color: #e6b800;
+      transform: scale(1.05);
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1a1a1a;
+      background: #fff8e1;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 1.8em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .annonce {
+      background: white;
+      margin-bottom: 24px;
+      padding: 24px;
+      border-left: 6px solid #ffc107;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .annonce .image-slider {
+      width: 200px;
+      height: 120px;
+      overflow: hidden;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .annonce .image-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .annonce .content { flex-grow: 1; }
+    .annonce h3 { margin-top: 0; }
+    .annonce p { margin-bottom: 10px; }
+    .annonce a {
+      color: #014080;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .avis-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: #f4f4f4;
+      padding: 40px 20px;
+    }
+    .avis-card {
+      background: #fff8e1;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      font-size: 1.1em;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .contact-section {
+      background: #fff8e1;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .contact-card {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      font-size: 1.1em;
+    }
+    .contact-card p {
+      margin: 12px 0;
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav a { flex: 1 1 100%; text-align: center; }
+      .hero { font-size: 1.5em; padding: 60px 20px 20px; }
+      .annonce { flex-direction: column; align-items: flex-start; }
+      .annonce .image-slider { width: 100%; height: 180px; }
+      .avis-card { width: 100%; font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <div class="logo-text">
+        <div class="main"><span class="h">H</span><span class="a">A</span></div>
+        <div class="autos">AUTOS</div>
+      </div>
+    </div>
+    <div class="adresse">9000 rue de l'ondaine, 42490 Fraisses</div>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="vehicules.html">Nos véhicules</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <p></p>
+    <button class="vehicles-btn" onclick="window.location.href='vehicules.html'">Voir nos véhicules</button>
+  </div>
+
+  <div class="section">
+    <h2>Nos nouveautés</h2>
+    <div class="annonce"><div class="image-slider"><img src="car1.jpg" alt="Voiture 1"></div><div class="content"><h3>Peugeot 208</h3><p>Année : 2020 | 35 000 km | Essence</p><a href="#">Voir plus</a></div></div>
+    <div class="annonce"><div class="image-slider"><img src="car2.jpg" alt="Voiture 2"></div><div class="content"><h3>Renault Clio V</h3><p>Année : 2021 | 25 000 km | Diesel</p><a href="#">Voir plus</a></div></div>
+    <div class="annonce"><div class="image-slider"><img src="car3.jpg" alt="Voiture 3"></div><div class="content"><h3>Citroën C3</h3><p>Année : 2019 | 50 000 km | Essence</p><a href="#">Voir plus</a></div></div>
+  </div>
+
+  <div class="section">
+    <h2>Ce que disent nos clients</h2>
+    <div class="avis-container">
+      <div class="avis-card">"Très satisfait de mon achat, service rapide et personnel accueillant."</div>
+      <div class="avis-card">"Des voitures fiables à des prix abordables. Je recommande vivement."</div>
+      <div class="avis-card">"L'équipe a su m'accompagner parfaitement dans le choix de mon véhicule."</div>
+    </div>
+  </div>
+
+  <div id="contact" class="contact-section">
+    <h2>Contactez-nous</h2>
+    <div class="contact-card">
+      <p><strong>Adresse :</strong><br>9000 rue de l'ondaine,<br>42490 Fraisses</p>
+      <p><strong>Téléphone :</strong><br>06 65 35 92 39</p>
+      <p><strong>Email :</strong><br>haotos42@gmail.com</p>
+      <p><strong>Horaires :</strong> Lun - Sam : 9h - 18h</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 HA AUTOS - Tous droits réservés</p>
+  </footer>
+</body>
+</html>
